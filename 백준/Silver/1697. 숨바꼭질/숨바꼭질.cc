@@ -4,7 +4,7 @@
 using  namespace std;
 
 bool visited[100001];
-
+int answer = 0;
 int N, K;
 void BFS(int node);
 
@@ -16,13 +16,13 @@ int main()
 
     cin >> N >> K;
     BFS(N);
-   
+
 }
 
 void BFS(int node)
 {
     queue<pair<int, int>> q;
-    q.push(make_pair(node,0));
+    q.push(make_pair(node, 0));
     while (!q.empty())
     {
         int now_node = q.front().first;
@@ -33,31 +33,30 @@ void BFS(int node)
             cout << cnt;
             break;
         }
-        if (now_node + 1 < 100001 && now_node+1>=0)
+        if (now_node + 1 < 100001)
         {
             if (!visited[now_node + 1])
             {
                 visited[now_node + 1] = true;
-                q.push(make_pair(now_node + 1,cnt+1));
+                q.push(make_pair(now_node + 1, cnt + 1));
             }
         }
-        if (now_node - 1<100001 && now_node - 1 >= 0)
+        if (now_node - 1 >= 0)
         {
             if (!visited[now_node - 1])
             {
                 visited[now_node - 1] = true;
-                q.push(make_pair(now_node - 1,cnt+1));
+                q.push(make_pair(now_node - 1, cnt + 1));
             }
         }
-        if (now_node *2<100001 && now_node *2 >= 0)
+        if (now_node * 2 < 100001)
         {
-            if (!visited[now_node *2])
+            if (!visited[now_node * 2])
             {
-                visited[now_node*2] = true;
-                q.push(make_pair(now_node*2,cnt+1));
+                visited[now_node * 2] = true;
+                q.push(make_pair(now_node * 2, cnt + 1));
             }
         }
-       
+
     }
 }
-
