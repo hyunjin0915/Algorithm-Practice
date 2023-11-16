@@ -56,13 +56,9 @@ int main()
 			}
 		}
 	}
-	for (int i = 1; i <= N; i++)
-	{
-		for (int j = 1; j <= N; j++)
-		{
-			visited[i][j] = false;
-		}
-	}
+	
+		memset(visited, false, sizeof(visited));
+	
 	for (int i = 1; i <= N; i++)
 	{
 		for (int j = 1; j <= N; j++)
