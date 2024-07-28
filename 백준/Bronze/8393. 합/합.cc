@@ -1,17 +1,15 @@
 #include <iostream>
-
 using namespace std;
 
 int main()
 {
-    int N;
-    cin>>N;
+    int n;
+    int cnt = 0;
+    cin>>n;
     
-    int sum = 0;
-    
-    for(int i=1;i<=N;i++)
+    for(int i=1;i<=n;i++)
     {
-        sum+=i;
+        cnt+=i;
     }
-    cout<<sum<<endl;
+    cout<<cnt;
 }
