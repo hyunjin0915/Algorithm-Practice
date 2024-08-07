@@ -1,3 +1,47 @@
+✔️ for문 2개를 돌리면 효율성 통과 불가 <br/>
+<details>
+  <summary>처음 생각했던 풀이 방법</summary>
+
+            
+    정확성은 통과하나 효율성 통과가 안됨
+    
+
+    #include <string>
+    #include <vector>
+    #include <algorithm>
+    #include <iostream>
+    using namespace std;
+    
+    int solution(vector<int> people, int limit) {
+        int answer = 0;
+        int pNum = people.size();
+        bool arr[50001] = {0,};
+        sort(people.begin(),people.end(),greater<>());
+        for(int i=0;i<people.size();i++)
+        {
+            if(arr[i]==true) continue;
+            arr[i]=true;
+            for(int j=i+1;j<people.size();j++)
+            {
+                if(people[i] + people[j]<=limit && arr[j]==false)
+                {
+                    arr[j]=true;
+                    break;
+                }
+            }
+            answer++;
+        }
+        return answer;
+    }
+ 
+    
+
+</details>
+✔️ 그리디 알고리즘으로 배열의 앞뒤 인덱스 사용한 풀이! 반복문 최소화 하기 
+
+---
+<br/>
+
 # [level 2] 구명보트 - 42885 
 
 [문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42885) 
