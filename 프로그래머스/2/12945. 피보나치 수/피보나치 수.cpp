@@ -3,17 +3,24 @@
 
 using namespace std;
 
+vector<int> v;
+
+int fibo(int num)
+{
+    if(num<=1) return num;
+    else if(v[num]!=0) return v[num];
+    else
+    {
+        return v[num] = (fibo(num-1) + fibo(num-2))%1234567;
+    }
+}
 
 int solution(int n) {
     int answer = 0;
-    vector<int> v;
     v.resize(100001,0);
     v[0]=0;
     v[1]=1;
-    for(int i=2;i<=n;i++)
-    {
-        v[i]=(v[i-1]+v[i-2])% 1234567;
-    }
+    fibo(n);
     answer = v[n];
     return (answer);
 }
