@@ -16,7 +16,7 @@ vector<string> solution(vector<string> record) {
         stringstream ss(a);
         vector<string> words;
         string word;
-        while(getline(ss, word, ' '))
+        while(ss >> word)
         {
             words.push_back(word);
         }
