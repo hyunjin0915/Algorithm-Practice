@@ -1,30 +1,30 @@
 #include <iostream>
-#include <vector>
 #include <cmath>
 using namespace std;
 
 int main()
 {
-    ios::sync_with_stdio(false);
+     ios::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    
-    int N,M;
+    int M, N;
     cin>>M>>N;
-    vector<int> A(N+1);
-    
-    for(int i=2;i<=N;i++)
-        A[i]=i;
-    for(int i=2;i<=sqrt(N);i++)
+    bool arr[1000001] = {false,};
+    arr[1] =true;
+    for(int i=2;i<=sqrt(N);++i)
     {
-        if(A[i]==0)
-            continue;
-        for(int j = i+i;j<=N;j+=i)
-            A[j]=0;
+        if(arr[i]) continue;
+        else
+        {
+            for(int j=i+i;j<=N;j+=i)
+            {
+                arr[j] = true;
+            }
+        }
+        
     }
-    for(int i=M;i<=N;i++)
+    for(int i=M;i<=N;++i)
     {
-        if(A[i]!=0)
-            cout<<A[i]<<"\n";
+        if(!arr[i]) cout<<i<<'\n';
     }
 }
