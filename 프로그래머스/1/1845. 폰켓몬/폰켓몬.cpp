@@ -6,8 +6,12 @@ int solution(vector<int> nums)
 {
     int answer = 0;
     set<int> s;
-    for(auto iter:nums)
-        s.insert(iter);
-    answer=s.size()>nums.size()/2?nums.size()/2:s.size();
-    return answer;
+    for(auto a:nums)
+    {
+        s.insert(a);
+    }
+    int cnt = nums.size()/2;
+    if(s.size()>=cnt) return cnt;
+    else return s.size();
+
 }
