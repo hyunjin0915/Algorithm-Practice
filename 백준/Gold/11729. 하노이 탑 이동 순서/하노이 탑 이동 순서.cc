@@ -1,24 +1,32 @@
-#include <iostream>
-
 using namespace std;
+#include <iostream>
+#include <vector>
 
-void hanoi(int n, int start, int end, int temp)
+vector<pair<int,int>>vec;
+void hanoi(int n, int start, int temp, int end)
 {
-    if(n==1) cout<<start<<" "<<end<<'\n';
-    
+    if(n==1)
+    {
+        vec.push_back(make_pair(start, end));
+        return;
+    }
     else
     {
-        hanoi(n-1, start, temp, end);
-        cout<<start<<" "<<end<<'\n';
-        hanoi(n-1, temp, end, start);
+        hanoi(n-1, start, end, temp);
+        vec.push_back(make_pair(start, end));
+        hanoi(n-1, temp, start, end);
     }
-    
 }
 
 int main()
 {
-    int num; 
-    cin>>num;
-    cout<<(1<<num)-1<<'\n';
-    hanoi(num, 1, 3,2);
+    int N;
+    cin>>N;
+    hanoi(N, 1, 2, 3);
+    cout<<vec.size()<<"\n";
+    for(int i=0;i<vec.size();i++)
+    {
+        cout<<vec[i].first<<" "<<vec[i].second<<"\n";
+    }
+    return 0;
 }
