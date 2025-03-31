@@ -1,22 +1,18 @@
-
-#include <iostream>
-
 using namespace std;
-
-
-int fibo(int num)
-{
-    if(num == 0) return 0;
-    else if(num==1) return 1;
-    else return(fibo(num-1)+fibo(num-2));
-}
+#include <iostream>
 
 int main()
 {
-    int n;
-    cin>>n;
+    int fibo[21] = {};
+    int N;
+    cin>>N;
     
-    cout<<fibo(n);
+    fibo[0]=0;
+    fibo[1] = 1;
     
-    return 0;
+    for(int i=2;i<=N;i++)
+    {
+        fibo[i]= fibo[i-1] + fibo[i-2];
+    }
+    cout<<fibo[N];
 }
