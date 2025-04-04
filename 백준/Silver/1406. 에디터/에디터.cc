@@ -1,32 +1,33 @@
+using namespace std;
 #include <iostream>
 #include <list>
-
-using namespace std;
 
 int main()
 {
     list<char> lt;
-    string st;
-    cin>>st;
-    for(int i=0;i<st.length();i++)
+    string str;
+    cin>>str;
+    
+    for(int i=0;i<str.size();i++)
     {
-        lt.push_back(st[i]);
+        lt.push_back(str[i]);
     }
+    
     list<char>::iterator iter = lt.end();
     
-    int M;
-    cin>>M;
-    char c;
-    for(int i=0;i<M;i++)
+    int N;
+    cin>>N;
+    while(N--)
     {
+        char c;
         cin>>c;
         if(c=='L')
         {
-            if(iter!=lt.begin()) iter--;
+            if(iter != lt.begin()) iter--;
         }
         else if(c=='D')
         {
-            if(iter!=lt.end()) iter++;
+            if(iter != lt.end()) iter++;
         }
         else if(c=='B')
         {
@@ -39,7 +40,7 @@ int main()
             lt.insert(iter, add);
         }
     }
-    for(auto it : lt)
+    for(auto it: lt)
     {
         cout<<it;
     }
