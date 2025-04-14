@@ -21,7 +21,7 @@ int main()
 
     s.push(0); //
     
-    for(int i=1;i<=N;i++) //n번의숫자입력받음
+    while(N--)
     {
         cin>>k;
         while(s.top()<k)
