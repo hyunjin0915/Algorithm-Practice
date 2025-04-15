@@ -1,63 +1,61 @@
-#include <iostream>
-#include <queue>
-
 using namespace std;
+#include <iostream>
 
 int main()
 {
     cin.tie(NULL);
     ios_base::sync_with_stdio(false);
     
-    queue<int> q;
+    int queue[2000001] = {0, };
+    int front = 0;
+    int rear = 0;
     
-    int N,k;
+    int N;
     cin>>N;
-    string cmd;
     
-    for(int i=0;i<N;i++)
+    while(N--)
     {
+        string cmd;
         cin>>cmd;
-        
         if(cmd=="push")
         {
+            int k;
             cin>>k;
-            q.push(k);
+            queue[rear++] = k;
             continue;
         }
         else if(cmd=="pop")
         {
-            if(q.empty())
+            if(rear==0 || front == rear)
             {
                 cout<<"-1"<<'\n';
                 continue;
             }
-            cout<<q.front()<<'\n';
-            q.pop();
+            cout<<queue[front++]<<'\n';
+         
             continue;
         }
         else if(cmd=="size")
         {
-            cout<<q.size()<<'\n';
+            cout<<rear - front<<'\n';
             continue;
         }
         else if(cmd=="empty")
         {
-            if(q.empty()) cout<<"1"<<'\n';
+            if(front == rear) cout<<"1"<<'\n';
             else cout<<"0"<<'\n';
             continue;
         }
         else if(cmd=="front")
         {
-            if(q.empty()) cout<<"-1"<<'\n';
-            else cout<<q.front()<<'\n';
+            if(front ==rear) cout<<"-1"<<'\n';
+            else cout<<queue[front]<<'\n';
         }
         else if(cmd=="back")
         {
-            if(q.empty()) cout<<"-1"<<'\n';
-            else cout<<q.back()<<'\n';
+            if(front == rear) cout<<"-1"<<'\n';
+            else cout<<queue[rear-1]<<'\n';
         }
     }
-
     return 0;
 }
-
