@@ -1,53 +1,54 @@
+using namespace std;
 #include <iostream>
 #include <vector>
-#include <queue>
-using  namespace std;
+#include <algorithm>
+#include<queue>
 
-static vector<vector <int>>A;
-static vector<bool> visited; 
-int answer = 0;
-void BFS(int node);
+void DFS(int node);
+
+vector<vector<int>> vec;
+vector<bool> visit;
+
+int cnt = 0;
 
 int main()
 {
-    ios::sync_with_stdio(false);
     cin.tie(NULL);
-    cout.tie(NULL);
-
+    ios_base::sync_with_stdio(false);
+   
     int N, M;
-    cin >> N >> M;
+    cin>>N>>M;
+    
+    vec.resize(N+1);
+    visit.resize(N+1, false);
 
-    A.resize(N + 1);
-    for (int i = 0; i < M; i++)
+    while(M--)
     {
-        int s, e;
-        cin >> s >> e;
-        A[s].push_back(e);
-        A[e].push_back(s);
+        int u, v;
+        cin>>u>>v;
+        vec[u].push_back(v);
+        vec[v].push_back(u);
     }
-
-    visited = vector<bool>(N + 1, false);
-    BFS(1);
-    cout << answer-1;
+    
+    DFS(1);
+    cout<<cnt-1;
 }
 
-void BFS(int node)
+void DFS(int node)
 {
-    queue<int> q;
-    q.push(node);
-    visited[node] = true;
-    while (!q.empty())
+    cnt++;
+    visit[node] = true;
+    for(int i:vec[node])
     {
-        int now_node = q.front();
-        q.pop();
-        answer++;
-        for (int j = 0; j < A[now_node].size(); j++)
+        if(!visit[i])
         {
-            if (!visited[A[now_node][j]]) 
-            {
-                visited[A[now_node][j]] = true;
-                q.push(A[now_node][j]);
-            }
+            DFS(i);
         }
     }
 }
+
+
+
+
+
+
