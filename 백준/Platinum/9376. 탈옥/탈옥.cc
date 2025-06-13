@@ -88,14 +88,14 @@ int main()
             }
         }
     
-        for (int i = 0; i < h; i++) {
-            for (int j = 0; j < w; j++) {
+        for (int i = 1; i <= h; i++) {
+            for (int j = 1; j <= w; j++) {
                 char c;
                 cin >> c;
-                map[i+1][j+1] = c;
+                map[i][j] = c;
                 if (c == '$') {
-                    cPos.push_back({i+1, j+1});
-                    map[i+1][j+1] = '.';
+                    cPos.push_back({i, j});
+                    //map[i][j] = '.';
                 }
             }
         }
