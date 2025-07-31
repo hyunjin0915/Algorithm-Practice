@@ -1,43 +1,49 @@
 #include<vector>
 #include <queue>
+
 using namespace std;
 
-int dx[4] = {0, 0, -1 , 1};
-int dy[4] = {1, -1,0,0};
+struct Node
+{
+    int x;
+    int y;
+    Node(int _x, int _y) : x(_x), y(_y){}
+};
 
-int dist[101][101] = {0, };
-bool visited[101][101] = {false, };
-//void BFS(int a, int b);
+int dx[4] = {0, 0, -1, 1};
+int dy[4] = {-1, 1, 0, 0};
+int n, m;
+vector<vector<bool>> visited;
+vector<vector<int>> dp;
 
 int solution(vector<vector<int> > maps)
 {
     int answer = 0;
-    int N = maps.size();
-    int M = maps[0].size();
+    n = maps.size();
+    m = maps[0].size();
+    visited.resize(n, vector<bool>(m , false));
+    dp.resize(n , vector<int>(m, 0));
     
-    queue<pair<int, int>> q;
-    q.push({0, 0});
+    queue<Node>q;
+    q.push(Node(0,0));
     visited[0][0] = true;
+    dp[0][0] = 1;
+    
     while(!q.empty())
     {
-        int frontX = q.front().first;
-        int frontY = q.front().second;
+        Node node = q.front();
         q.pop();
-
         for(int i=0;i<4;i++)
         {
-            int nx = frontX + dx[i];
-            int ny = frontY + dy[i];
-            if(nx < 0 || ny < 0 || nx >= N || ny >= M) continue;
-            if(maps[nx][ny] == 1 && !visited[nx][ny])
-            {
-                q.push({nx, ny});
-                visited[nx][ny] = true;
-                dist[nx][ny] = dist[frontX][frontY] + 1;
-            }
-            
+            int nx = node.x + dx[i];
+            int ny = node.y + dy[i];
+            if(nx<0 || ny<0 || nx>=n || ny >=m) continue;
+            if(maps[nx][ny] == 0 || visited[nx][ny]) continue;
+            q.push(Node(nx, ny));
+            dp[nx][ny] = dp[node.x][node.y] + 1;
+            visited[nx][ny] = true;
         }
     }
-    if(dist[N-1][M-1] == 0) return -1;
-    return dist[N-1][M-1]+1;
+    
+    return dp[n-1][m-1] == 0 ? -1 : dp[n-1][m-1];
 }
