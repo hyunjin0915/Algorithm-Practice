@@ -1,41 +1,31 @@
-#include <iostream>
-#include <utility>
-#include <vector>
-#include <algorithm>
-
 using namespace std;
+#include <iostream>
+#include <vector>
 
 int main()
 {
-    int N, K, W, V;
-    cin >> N >> K;
-    vector<pair<int, int>> vv;
-    int dp[101][100001] = {0};  // dp 배열을 0으로 초기화
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
 
-    for (int i = 0; i < N; i++)
+    int N, K;
+    cin>>N>>K;
+    vector<pair<int, int>> bag;
+    int dp[100001] = {0};
+    
+    while(N--)
     {
-        cin >> W >> V;
-        vv.push_back(make_pair(W, V));
+        int W, V;
+        cin>>W>>V;
+        bag.push_back({W, V});
     }
-
-    for (int i = 1; i <= N; i++)
+    for(int i=0;i<bag.size();i++)
     {
-        for (int j = 1; j <= K; j++)
+        auto [curW, curV] = bag[i];
+        for(int j = K; j >= curW ; j--)
         {
-            int curW = vv[i - 1].first;
-            int curV = vv[i - 1].second;
-            if (curW <= j)
-            {
-                dp[i][j] = max(dp[i - 1][j], curV + dp[i - 1][j - curW]);
-            }
-            else
-            {
-                dp[i][j] = dp[i - 1][j];
-            }
+            dp[j] = max(dp[j], dp[j-curW] + curV);
         }
     }
-
-    cout << dp[N][K];
-
+    cout<<dp[K];
     return 0;
 }
