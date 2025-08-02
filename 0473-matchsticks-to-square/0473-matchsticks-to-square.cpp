@@ -6,6 +6,7 @@ public:
     bool makesquare(vector<int>& _matchsticks) {
         int sum = 0;
         matchsticks = _matchsticks;
+        sort(matchsticks.rbegin(), matchsticks.rend());
         buckets.resize(4, 0);
         for(int s : matchsticks)
         {
