@@ -8,19 +8,23 @@ This is a auto push repository for Baekjoon Online Judge created with [BaekjoonH
 | ------- |
 | [0416-partition-equal-subset-sum](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0416-partition-equal-subset-sum) |
 | [0698-partition-to-k-equal-sum-subsets](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0698-partition-to-k-equal-sum-subsets) |
+| [1418-fair-distribution-of-cookies](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/1418-fair-distribution-of-cookies) |
 ## Dynamic Programming
 |  |
 | ------- |
 | [0416-partition-equal-subset-sum](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0416-partition-equal-subset-sum) |
 | [0698-partition-to-k-equal-sum-subsets](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0698-partition-to-k-equal-sum-subsets) |
+| [1418-fair-distribution-of-cookies](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/1418-fair-distribution-of-cookies) |
 ## Backtracking
 |  |
 | ------- |
 | [0698-partition-to-k-equal-sum-subsets](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0698-partition-to-k-equal-sum-subsets) |
+| [1418-fair-distribution-of-cookies](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/1418-fair-distribution-of-cookies) |
 ## Bit Manipulation
 |  |
 | ------- |
 | [0698-partition-to-k-equal-sum-subsets](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0698-partition-to-k-equal-sum-subsets) |
+| [1418-fair-distribution-of-cookies](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/1418-fair-distribution-of-cookies) |
 ## Memoization
 |  |
 | ------- |
@@ -29,4 +33,5 @@ This is a auto push repository for Baekjoon Online Judge created with [BaekjoonH
 |  |
 | ------- |
 | [0698-partition-to-k-equal-sum-subsets](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0698-partition-to-k-equal-sum-subsets) |
+| [1418-fair-distribution-of-cookies](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/1418-fair-distribution-of-cookies) |
 <!---LeetCode Topics End-->
