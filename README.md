@@ -6,6 +6,7 @@ This is a auto push repository for Baekjoon Online Judge created with [BaekjoonH
 ## Array
 |  |
 | ------- |
+| [0209-minimum-size-subarray-sum](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0209-minimum-size-subarray-sum) |
 | [0410-split-array-largest-sum](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0410-split-array-largest-sum) |
 | [0416-partition-equal-subset-sum](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0416-partition-equal-subset-sum) |
 | [0473-matchsticks-to-square](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0473-matchsticks-to-square) |
@@ -44,6 +45,7 @@ This is a auto push repository for Baekjoon Online Judge created with [BaekjoonH
 ## Binary Search
 |  |
 | ------- |
+| [0209-minimum-size-subarray-sum](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0209-minimum-size-subarray-sum) |
 | [0410-split-array-largest-sum](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0410-split-array-largest-sum) |
 ## Greedy
 |  |
@@ -52,5 +54,10 @@ This is a auto push repository for Baekjoon Online Judge created with [BaekjoonH
 ## Prefix Sum
 |  |
 | ------- |
+| [0209-minimum-size-subarray-sum](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0209-minimum-size-subarray-sum) |
 | [0410-split-array-largest-sum](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0410-split-array-largest-sum) |
+## Sliding Window
+|  |
+| ------- |
+| [0209-minimum-size-subarray-sum](https://github.com/hyunjin0915/Algorithm-Practice/tree/master/0209-minimum-size-subarray-sum) |
 <!---LeetCode Topics End-->
