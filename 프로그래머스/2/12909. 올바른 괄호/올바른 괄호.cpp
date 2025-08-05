@@ -1,32 +1,24 @@
 #include<string>
-#include <iostream>
 #include <stack>
 
 using namespace std;
 
 bool solution(string s)
 {
-    bool answer = true;
     stack<char> st;
-
-    for(int i=0;i<s.size();i++)
+    for(int i = 0;i<s.size();i++)
     {
-        if(s[i]=='\(')
+        if(s[i] == '\(')
         {
-            st.push('\(');
+            st.push(s[i]);
         }
         else
         {
             if(st.empty()) return false;
+            if(st.top()!= '\(') return false;
             st.pop();
         }
     }
-    if(st.empty())
-    {
-        answer=true;
-    }
-    else answer = false;
-    
-
-    return answer;
+    if(st.empty()) return true;
+    return false;
 }
