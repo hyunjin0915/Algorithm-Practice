@@ -1,38 +1,38 @@
 #include <string>
 #include <vector>
-#include <queue>
-//#include <iostream>
+#include <deque>
 
 using namespace std;
 
 int solution(int bridge_length, int weight, vector<int> truck_weights) {
     int answer = 0;
-    queue<int> q;
-    int w = 0;
+    int curW = 0;
     int i = 0;
+    deque<int> dq;
+    //모든 트럭이 건너는데 정해진 무게를 넘기면 안됨
     while(true)
     {
-        if(i == (truck_weights.size()))break;
-        if(q.size()<bridge_length)
+        if(i == truck_weights.size()) break;
+        if(dq.size()<bridge_length)
         {
-            if(w+truck_weights[i]<=weight)
+            if((curW + truck_weights[i]) <= weight)
             {
-                q.push(truck_weights[i]);
-                w += truck_weights[i];
+                dq.push_back(truck_weights[i]);
+                curW += truck_weights[i];
                 i++;
             }
             else
-                q.push(0);
-            
+            {
+                dq.push_back(0);
+            }
         }
-        if(q.size()==bridge_length)
+        if(dq.size() == bridge_length)
         {
-            w-=(q.front());
-            q.pop();
+            curW -= dq.front();
+            dq.pop_front();
         }
-        //cout<<q.front()<<',';
         answer++;
-        
     }
-    return answer+bridge_length;
+    
+    return answer + bridge_length;
 }
