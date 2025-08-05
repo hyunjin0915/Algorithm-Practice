@@ -6,21 +6,23 @@ using namespace std;
 
 vector<int> solution(vector<int> prices) {
     vector<int> answer;
-    answer.resize(prices.size(),0);
-    stack <int> s;
+    stack<int> st;
+    answer.resize(prices.size(), 0);
     for(int i=0;i<prices.size();i++)
     {
-        while(!s.empty() && prices[s.top()]>prices[i])
+        while(!st.empty() && (prices[i] < prices[st.top()]))
         {
-            answer[s.top()] = i - s.top();
-            s.pop();
+            int index = st.top();
+            st.pop();
+            answer[index] = i - index;
         }
-        s.push(i);
+        st.push(i);
     }
-    while(!s.empty())
+    while(!st.empty())
     {
-        answer[s.top()] = prices.size() - s.top() - 1;
-        s.pop();
+        int index = st.top();
+        answer[index] = (prices.size() - index - 1);
+        st.pop();
     }
     return answer;
 }
