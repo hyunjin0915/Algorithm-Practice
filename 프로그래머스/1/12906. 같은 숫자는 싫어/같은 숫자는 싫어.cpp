@@ -1,26 +1,28 @@
 #include <vector>
 #include <iostream>
+#include <stack>
 
 using namespace std;
 
 vector<int> solution(vector<int> arr) 
 {
     vector<int> answer;
-    int num;
-    for(int i=0;i<arr.size();i++)
+    stack<int> s;
+
+    for(int n : arr)
     {
-        
-        if(i==0){
-            answer.push_back(arr[i]);
-            num = arr[i];
-            continue;
-        }
-        if(num == arr[i]) continue;
-        else
+        if(!s.empty())
         {
-            answer.push_back(arr[i]);
-            num = arr[i];
+            int num = s.top();
+            if(num == n) continue;            
         }
+        s.push(n);
+    }
+    answer.resize(s.size());
+    for(int i = answer.size()-1;i>=0;i--)
+    {
+        answer[i] = s.top();
+        s.pop();
     }
 
     return answer;
