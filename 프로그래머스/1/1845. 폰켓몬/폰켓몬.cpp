@@ -1,17 +1,16 @@
 #include <vector>
-#include <set>
+#include <unordered_set>
 using namespace std;
 
 int solution(vector<int> nums)
 {
-    int answer = 0;
-    set<int> s;
-    for(auto a:nums)
+    unordered_set<int> s;
+    for(int num : nums)
     {
-        s.insert(a);
+        s.insert(num);
     }
-    int cnt = nums.size()/2;
-    if(s.size()>=cnt) return cnt;
-    else return s.size();
-
+    int want = nums.size()/2;
+    if(want > s.size()) return s.size();
+    else return want;
+    
 }
