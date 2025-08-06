@@ -6,20 +6,25 @@ using namespace std;
 
 int solution(vector<int> scoville, int K) {
     int answer = 0;
-    priority_queue<int,vector<int>, greater<int>> q;
-    for(auto a : scoville)
+    priority_queue<int,vector<int>, greater<int>> pq;
+    for(int s : scoville)
     {
-        q.push(a);
+        pq.push(s);
     }
-    while(q.top()<K)
+    
+    while(pq.top()<K)
     {
-        if(q.size()==1) return -1;
-        int num1 = q.top();
-        q.pop();
-        int num2 = q.top();
-        q.pop();
-        q.push(num1 + num2*2);
+        if(pq.size()==1) return -1;
         answer++;
+        
+        int n1 = pq.top();
+        pq.pop();
+        int n2 = pq.top();
+        pq.pop();
+        
+        int sum = n1 + n2 * 2;
+        pq.push(sum);
     }
+    
     return answer;
 }
