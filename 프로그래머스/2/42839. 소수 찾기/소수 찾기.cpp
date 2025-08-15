@@ -5,61 +5,52 @@
 
 using namespace std;
 
-vector<bool> primes;
 vector<int> digits;
-set<int> numset;
+set <int> numSet;
 vector<bool> visited;
+
+bool Check(int num)
+{
+    if(num == 0 || num == 1) return false;
+    for(int i=2; i*i <= num; i++)
+    {
+        if(num % i == 0) return false;
+    }
+    return true;
+}
 
 void DFS(int depth, int count)
 {
-    if(depth>0) numset.insert(count);
+    if(depth>0) numSet.insert(count);
     
     for(int i=0;i<digits.size();i++)
     {
         if(!visited[i])
         {
-            if(depth==0 && digits[i]==0) continue;
             if(i>0 && digits[i-1]==digits[i] && !visited[i-1]) continue;
-            visited[i] = true;
+            visited[i]=true;            
             DFS(depth+1, count*10 + digits[i]);
-            visited[i]=false;
+            visited[i] = false;
         }
     }
 }
 
+
 int solution(string numbers) {
     int answer = 0;
     
-    int size = numbers.size();
-    visited.resize(size, false);
-    
-    string str = "";
-    for(int i=0;i<size;i++)
+    for(int i=0;i<numbers.size();i++)
     {
-        str += '9';
         digits.push_back(numbers[i]-'0');
     }
+    visited.resize(numbers.size(),false);
+    
     sort(digits.begin(), digits.end());
-    
-    int max = stoi(str);
-    primes.resize(max, true);
-    primes[0] = false;
-    primes[1] = false;
-    
-    for(int i=2;i*i<=max;i++)
-    {
-        if(!primes[i]) continue;
-        for(int j = i*i; j<=max; j+= i)
-        {
-            primes[j] = false;
-        }
-    }
-    
     DFS(0, 0);
     
-    for(int n : numset)
-    {        
-        if(primes[n]) answer++;
+    for(int a : numSet)
+    {
+        if(Check(a)) answer++;
     }
     return answer;
 }
