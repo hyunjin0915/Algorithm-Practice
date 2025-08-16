@@ -1,46 +1,52 @@
 #include <string>
 #include <vector>
-#include <set>
 #include <map>
-#include <iostream>
+#include <algorithm>
 
 using namespace std;
 
-map<string, multiset<string>> m;
-map<pair<string, string>, int> ticket_count;
 vector<string> answer;
-bool finished = false;
+map<string, vector<string>> maps;
+map<string, vector<bool>> visited;
+int T;
 
-void DFS(string from, int depth, int total_ticket_count)
+bool DFS(string cur, int cnt)
 {
-    answer.push_back(from);
-
-    if (depth == total_ticket_count) {
-        finished = true;
-        return;
+    if(cnt == T) return true;
+    
+    auto& path = maps[cur];
+    auto& flags = visited[cur];
+    
+    for(int i=0;i<path.size();i++)
+    {
+        if(flags[i]) continue;
+        flags[i] = true;
+        answer.push_back(path[i]);
+        if(DFS(path[i], cnt+1)) return true;
+        flags[i] = false;
+        answer.pop_back();
     }
-
-    for (auto to : m[from]) {
-        auto key = make_pair(from, to);
-        if (ticket_count[key] > 0) {
-            ticket_count[key]--;
-            DFS(to, depth + 1, total_ticket_count);
-            if (finished) return;
-            ticket_count[key]++;
-        }
-    }
-
-    answer.pop_back(); // 백트래킹
+    return false;
 }
 
+
 vector<string> solution(vector<vector<string>> tickets) {
-    // 1. 그래프 구성 및 티켓 수 세기
-    for (auto& ticket : tickets) {
-        m[ticket[0]].insert(ticket[1]);
-        ticket_count[{ticket[0], ticket[1]}]++;
+    
+    T = tickets.size();
+    for(auto t : tickets)
+    {
+        maps[t[0]].push_back(t[1]);
     }
-
-    DFS("ICN", 0, tickets.size());
-
+    
+    for(auto& t : maps)
+    {
+        auto& v = t.second;
+        sort(v.begin(), v.end());
+        visited[t.first] = vector<bool>(v.size(), false);
+    }
+    
+    answer.push_back("ICN");
+    DFS("ICN", 0);
+    
     return answer;
 }
